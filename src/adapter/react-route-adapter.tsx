@@ -8,7 +8,8 @@ import {
     useLoaderData,
     useRouteError,
     redirect,
-    useSearchParams, useMatches,
+    useSearchParams,
+    useMatches,
 } from "react-router-dom"
 
 export const McRouterOutlet = Outlet
