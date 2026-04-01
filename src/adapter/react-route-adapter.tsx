@@ -11,4 +11,12 @@ import {
     useSearchParams, useMatches,
 } from "react-router-dom"
 
-export const MmRouterOutlet = Outlet
+export const McRouterOutlet = Outlet
+export const mcRouterUseSearchParams = useSearchParams
+export const mcRouterUseMatches = useMatches
+export const mcRouterUseParams = useParams
+
+
+export function createMcReactRoute(routes: any, options?: any) {
+  return createBrowserRouter(routes, options)
+}
