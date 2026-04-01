@@ -19,5 +19,9 @@ export const mcRouterUseParams = useParams
 
 
 export function createMcReactRoute(routes: any, options?: any) {
-  return createBrowserRouter(routes, options)
+    return createBrowserRouter(routes, options)
+}
+
+export function McRouterProvider({router}: { router: any }) {
+    return <ReactRouterProvider router={router}/>
 }
