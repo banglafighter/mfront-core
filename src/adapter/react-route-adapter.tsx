@@ -4,6 +4,7 @@ import {
     Outlet,
     NavLink,
     useNavigation,
+    useNavigate,
     useParams,
     useLoaderData,
     useRouteError,
@@ -16,6 +17,8 @@ export const McRouterOutlet = Outlet
 export const mcRouterUseSearchParams = useSearchParams
 export const mcRouterUseMatches = useMatches
 export const mcRouterUseParams = useParams
+export const mcRouterUseNavigation = useNavigation
+export const mcRouterUseNavigate = useNavigate
 
 
 export function createMcReactRoute(routes: any, options?: any) {
