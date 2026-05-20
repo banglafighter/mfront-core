@@ -1,6 +1,6 @@
 {
   "name": "mfront-core",
-  "version": "0.0.5-alpha.17",
+  "version": "0.0.5-alpha.29",
   "description": "mFront all core shared logic and services",
   "scripts": {
     "build": "tsdown",
@@ -15,14 +15,8 @@
     "release": "pnpm run build && pnpm run version:release && pnpm run publish:release"
   },
   "dependencies": {
-    "cookie": "^1.1.1",
     "mmcore": "workspace:*",
-    "react-router": "^7.14.0",
-    "scheduler": "^0.27.0",
-    "set-cookie-parser": "^3.1.0"
-  },
-  "peerDependencies": {
-    "react-dom": "*"
+    "react-router": "^7.14.0"
   },
   "license": "Apache-2.0",
   "main": "src/index.ts",
