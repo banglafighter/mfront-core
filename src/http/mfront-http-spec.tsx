@@ -7,37 +7,37 @@ export type HTTPBody = unknown;
 export type HTTPQuery = Record<string, string | number | boolean | null | undefined>;
 export type HTTPHeaders = Record<string, string>;
 
-export interface HTTPRequest<TBody = HTTPBody, TQuery = HTTPQuery> {
+export interface HTTPRequest<TRequestBody = HTTPBody, TRequestQuery = HTTPQuery> {
     url: string
     baseURL?: string
+    isAbsoluteUrl?: boolean
     method: HTTPMethod
-    body?: TBody
-    query?: TQuery
+    body?: TRequestBody
+    query?: TRequestQuery
     headers?: HTTPHeaders
     bodyType?: BodyType
     responseType?: ResponseType
     timeout?: number // Mile Second
-    showLoader?: boolean
     onUploadProgress?: (progress: number) => void
     onDownloadProgress?: (progress: number) => void
 }
 
-export interface HTTPResponse<TData = unknown> {
-    success: boolean
-    status: number
-    data: TData
-    headers?: HTTPHeaders
+export interface HTTPResponse<TResponseBody = unknown> {
+    isSuccess: boolean
+    statusCode: number
+    body?: TResponseBody | null
+    headers?: HTTPHeaders | null
     message?: string
     error?: unknown
 }
 
-export interface HTTPHooks<TData = unknown> {
+export interface HTTPHooks<TResponseBody = unknown> {
     before?: (request: HTTPRequest) => void;
-    success?: (response: HTTPResponse<TData>) => void;
-    error?: (error: HTTPResponse<TData>) => void;
+    success?: (response: HTTPResponse<TResponseBody>) => void;
+    error?: (error: HTTPResponse<TResponseBody>) => void;
     finally?: () => void;
 }
 
 export interface HTTPClient {
-  request<TData = unknown, TBody = unknown, TQuery = unknown>(request: HTTPRequest<TBody, TQuery>, hooks?: HTTPHooks<TData>): Promise<HTTPResponse<TData>>
+  request<TResponseBody = unknown, TRequestBody = unknown, TRequestQuery = unknown>(request: HTTPRequest<TRequestBody, TRequestQuery>, hooks?: HTTPHooks<TResponseBody>): Promise<HTTPResponse<TResponseBody>>
 }
