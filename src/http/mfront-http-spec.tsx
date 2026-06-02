@@ -31,13 +31,13 @@ export interface HTTPResponse<TResponseBody = unknown> {
     error?: unknown
 }
 
-export interface HTTPHooks<TResponseBody = unknown> {
-    before?: (request: HTTPRequest) => void;
+export interface HTTPHooks<TResponseBody = unknown, TRequestBody = HTTPBody, TRequestQuery = HTTPQuery> {
+    before?: (request: HTTPRequest<TRequestBody, TRequestQuery>) => void;
     success?: (response: HTTPResponse<TResponseBody>) => void;
     error?: (error: HTTPResponse<TResponseBody>) => void;
     finally?: () => void;
 }
 
 export interface HTTPClient {
-  request<TResponseBody = unknown, TRequestBody = unknown, TRequestQuery = unknown>(request: HTTPRequest<TRequestBody, TRequestQuery>, hooks?: HTTPHooks<TResponseBody>): Promise<HTTPResponse<TResponseBody>>
+  request<TResponseBody = unknown, TRequestBody = unknown, TRequestQuery = unknown>(request: HTTPRequest<TRequestBody, TRequestQuery>, hooks?: HTTPHooks<TResponseBody, TRequestBody, TRequestQuery>): Promise<HTTPResponse<TResponseBody>>
 }
